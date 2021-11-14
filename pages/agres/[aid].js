@@ -7,11 +7,10 @@ import {Grid} from "@mui/material";
 import ElementCard from "../../components/elementCard";
 import SimpleBadge from "../../components/includes/appbar";
 
+export async function getServerSideProps(context) {
 
-
-
-export async function getStaticProps(context) {
-    const res = await fetch(process.env.API_URL+'/api/agres/');
+    const { aid } = context.query;
+    const res = await fetch(process.env.API_URL+'/api/agres/'+ aid+'/elements');
     const data = await res.json()
     console.log(data)
     if (!data) {
@@ -26,9 +25,11 @@ export async function getStaticProps(context) {
 }
 
 
+
+
+
 export default function Agres({ data }) {
-    const router = useRouter();
-    const { aid } = router.query;
+
 
     return (
         <Layout>
