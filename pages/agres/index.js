@@ -4,6 +4,11 @@ import utilStyles from "../../styles/utils.module.css";
 import Link from "next/link";
 import {Button} from "@mui/material";
 import Image from "next/image";
+import {Grid} from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import CardActions from "@mui/material/CardActions";
 
 
 export async function getStaticProps(context) {
@@ -33,42 +38,59 @@ export default function Agres({ data }) {
             {/* Add this <section> tag below the existing <section> tag */}
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
 
-                <ul className={utilStyles.list}>
+
+
+                <Grid container spacing={3}>
+
 
 
                     {data.map((agres) => (
                         <Link href={'agres/'+agres.id}>
-                        <li class="" className={utilStyles.listItem} style={{
-                            backgroundColor: agres.color,
-                            width: '100px',
-                            height: '100px'
-                        }}>
+                            <div style={{
+                                backgroundColor: agres.color,
 
-                            <Image
-                                width={250}
-                                height={150}
-                                src={'https://ufolepbrochure.s3.eu-west-3.amazonaws.com/' + agres.image}
-
-                            ></Image>
-
-                            <b>{agres.name}</b>
-                            <br/>
-                            {agres.description}
-                            <br/>
-                            <i>{agres.image}</i>
-
-                            <br/>
-                            <Link href={'agres/'+agres.id}>
-
-                                    <Button variant="contained" >Voir </Button>
-
-                            </Link>
+                            }}>
 
 
-                        </li>
+
+                                <Card sx={{ minWidth: 300 ,maxWidth:150}} style={{
+                                    backgroundColor: agres.color,
+
+                                }}>
+                                    <CardContent>
+
+
+                                        <Typography variant="body2">
+                                            <Image
+                                                width={75}
+                                                height={75}
+                                                src={'https://ufolepbrochure.s3.eu-west-3.amazonaws.com/' + agres.image}
+
+                                            ></Image>
+                                        </Typography>
+                                        <Typography sx={{ fontSize: 8 }} color="text.secondary" gutterBottom>
+                                            {agres.name}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button size="small">Voir</Button>
+                                    </CardActions>
+                                </Card>
+
+
+
+
+
+
+
+
+
+                            </div>
                         </Link>
                     ))}
-                </ul>
+
+                </Grid>
+
 
             </section>
         </Layout>
