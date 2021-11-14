@@ -1,1 +1,1 @@
-zip beanstalk-packages/difac.zip -r  .next/* next.config.js package.json .npmrc .env.production ./public/fonts
+zip beanstalk-packages/ufo.zip -r  .next/* next.config.js package.json .npmrc .env.production ./public/fonts

@@ -2,10 +2,12 @@ import { useRouter} from "next/router";
 import Layout from "../../components/layout/layout";
 import utilStyles from "../../styles/utils.module.css";
 import Link from "next/link";
+import {Button} from "@mui/material";
+import Image from "next/image";
 
 
 export async function getStaticProps(context) {
-    const res = await fetch(`http://localhost:8000/api/agres`)
+    const res = await fetch(process.env.API_URL+'/api/agres');
     const data = await res.json()
     console.log(data)
     if (!data) {
@@ -35,7 +37,20 @@ export default function Agres({ data }) {
 
 
                     {data.map((agres) => (
-                        <li class="" className={utilStyles.listItem} >
+                        <Link href={'agres/'+agres.id}>
+                        <li class="" className={utilStyles.listItem} style={{
+                            backgroundColor: agres.color,
+                            width: '100px',
+                            height: '100px'
+                        }}>
+
+                            <Image
+                                width={250}
+                                height={150}
+                                src={'https://ufolepbrochure.s3.eu-west-3.amazonaws.com/' + agres.image}
+
+                            ></Image>
+
                             <b>{agres.name}</b>
                             <br/>
                             {agres.description}
@@ -44,15 +59,17 @@ export default function Agres({ data }) {
 
                             <br/>
                             <Link href={'agres/'+agres.id}>
-                                <a>
-                                    HomePage
-                                </a>
+
+                                    <Button variant="contained" >Voir </Button>
+
                             </Link>
 
 
                         </li>
+                        </Link>
                     ))}
                 </ul>
+
             </section>
         </Layout>
     )
