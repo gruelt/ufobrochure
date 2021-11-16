@@ -48,9 +48,17 @@
 }
 
 .lightText {
-    color: #666;
+    color: #6666FF;
 }
 
 .element{
     background-color: aqua;
+}
+
+.agrestitle{
+    font-family: Roboto;
+    padding-top:15px;
+    color:white;
+    font-size: 30px;
+    font-weight: bold;
 }

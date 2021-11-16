@@ -27,6 +27,7 @@ export async function getStaticProps(context) {
 }
 
 
+
 export default function Agres({ data }) {
 
 
@@ -44,6 +45,7 @@ export default function Agres({ data }) {
 
 
 
+
                     {data.map((agres) => (
                         <Link href={'agres/'+agres.id}>
                             <div style={{
@@ -54,9 +56,11 @@ export default function Agres({ data }) {
 
 
                                 <Card sx={{ minWidth: 300 ,maxWidth:150}} style={{
-                                    backgroundColor: agres.color,
+                                    backgroundColor: agres.color , color:'white' , fontFamily: 'Roboto', fontSize:'30px'
 
-                                }}>
+                                }}
+                                className={'agrestitle'}
+                                >
                                     <CardContent>
 
 
@@ -68,9 +72,9 @@ export default function Agres({ data }) {
 
                                             ></Image>
                                         </Typography>
-                                        <Typography sx={{ fontSize: 8 }} color="text.secondary" gutterBottom>
+                                        <div className={'agrestitle'}>
                                             {agres.name}
-                                        </Typography>
+                                        </div>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small">Voir</Button>
