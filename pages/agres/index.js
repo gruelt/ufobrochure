@@ -55,7 +55,7 @@ export default function Agres({ data }) {
 
 
 
-                                <Card sx={{ minWidth: 300 ,maxWidth:150}} style={{
+                                <Card sx={{ minWidth: 800 ,maxWidth:150}} style={{
                                     backgroundColor: agres.color , color:'white' , fontFamily: 'Roboto', fontSize:'30px'
 
                                 }}
@@ -76,9 +76,7 @@ export default function Agres({ data }) {
                                             {agres.name}
                                         </div>
                                     </CardContent>
-                                    <CardActions>
-                                        <Button size="small">Voir</Button>
-                                    </CardActions>
+
                                 </Card>
 
 

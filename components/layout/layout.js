@@ -22,8 +22,8 @@ export default function Layout({children, home}){
             <header className={styles.header}>
                 <Image
                     src={"/images/fjep.png"}
-                    width={"250"}
-                    height={"100"}
+                    width={"200"}
+                    height={"90"}
                 ></Image>
 
             </header>

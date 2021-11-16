@@ -1,10 +1,13 @@
 .container {
-    max-width: 90%;
-    padding: 0 1rem;
+    max-width: 100%;
+    padding:  0.5rem;
     margin: 3rem auto 6rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
+    padding-bottom: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
