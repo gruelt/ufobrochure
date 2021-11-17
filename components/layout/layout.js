@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from './layout.module.css'
 import Image from "next/image";
-import {Button} from "@mui/material";
+import {Button, Link} from "@mui/material";
 import SimpleBadge from "../includes/appbar";
 
 
@@ -20,11 +20,13 @@ export default function Layout({children, home}){
 
 
             <header className={styles.header}>
+                <Link href={"/"}>
                 <Image
                     src={"/images/fjep.png"}
                     width={"200"}
                     height={"90"}
                 ></Image>
+                </Link>
 
             </header>
 
