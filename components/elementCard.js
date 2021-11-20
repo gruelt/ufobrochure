@@ -15,7 +15,7 @@ import {Chip} from "@mui/material";
 export default function ElementCard({ element }) {
 
     return (
-        <Card sx={{ minWidth: 275 ,maxWidth:275}} >
+        <Card sx={{ minWidth: 350 ,maxWidth:275}} >
             <CardContent>
 
 
