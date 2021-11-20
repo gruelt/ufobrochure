@@ -13,7 +13,7 @@ import {Chip} from "@mui/material";
 
 
 export default function ElementCard({ element }) {
-    console.log(element);
+
     return (
         <Card sx={{ minWidth: 275 ,maxWidth:275}} >
             <CardContent>
@@ -21,8 +21,8 @@ export default function ElementCard({ element }) {
 
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     <Image
-                        width={350}
-                        height={200}
+                        width={850}
+                        height={450}
                         src={'https://ufolepbrochure.s3.eu-west-3.amazonaws.com/' + element.image}
                     ></Image>
                 </Typography>

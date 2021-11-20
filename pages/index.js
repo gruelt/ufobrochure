@@ -6,13 +6,12 @@ import Link from 'next/link'
 export default function Home({data}) {
 
     const api = process.env.API_URL;
-    console.log(api);
+
 
 
   return (
       <Layout>
 
-        contenus {api}
 
 
           <Link href="/elements">

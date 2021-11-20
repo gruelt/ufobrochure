@@ -14,7 +14,7 @@ import CardActions from "@mui/material/CardActions";
 export async function getStaticProps(context) {
     const res = await fetch(process.env.API_URL+'/api/agres');
     const data = await res.json()
-    console.log(data)
+
     if (!data) {
         return {
             notFound: true,
@@ -67,7 +67,7 @@ export default function Agres({ data }) {
                                         <Typography variant="body2">
                                             <Image
                                                 width={75}
-                                                height={75}
+                                                height={90}
                                                 src={'https://ufolepbrochure.s3.eu-west-3.amazonaws.com/' + agres.image}
 
                                             ></Image>
