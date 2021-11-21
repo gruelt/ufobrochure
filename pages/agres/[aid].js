@@ -13,7 +13,21 @@ import Input from "@mui/material/Input";
 import FormHelperText from "@mui/material/FormHelperText";
 import { Slider,Checkbox } from '@mui/material';
 import FormLabel from '@mui/material/FormLabel';
-import {FormGroup,FormControlLabel} from "@mui/material";
+import {FormGroup,FormControlLabel,Button,Modal,Box,Typography} from "@mui/material";
+import MultipleSelect from "../../components/agres/MultipleSelect";
+
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 
 
@@ -56,7 +70,13 @@ export default function Agres({ initialData,familles }) {
 
     const [formText,setFormText] = useState('');
     const [range, setRange] = useState([0.1, 0.7]);
-    const [selectedFamilly,setselectedFamilly] = useState([]);
+    const [selectedFamilly,setSelectedFamilly] = useState([]);
+
+    //Modal Part
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
 
     //Effect for formText
@@ -64,7 +84,11 @@ export default function Agres({ initialData,familles }) {
         console.log(selectedFamilly);
         let filteredData = initialData.filter(item => {
 
-            return String(item.nom).toLowerCase().includes(formText.toLowerCase()) && item.difficulte >= range[0] && item.difficulte <= range[1];
+            return String(item.nom).toLowerCase().includes(formText.toLowerCase())
+                         && item.difficulte >= range[0]
+                         && item.difficulte <= range[1]
+                        &&  ( selectedFamilly.includes(item.famille_id) || selectedFamilly.length==0)
+                ;
         })
 
 
@@ -74,6 +98,14 @@ export default function Agres({ initialData,familles }) {
     },[formText,range,selectedFamilly]);
 
 
+    function callbackSelectedFamille(selectedFamilles){
+        //etselectedFamilly(selectedFamilles);
+
+        setSelectedFamilly(selectedFamilles);
+        console.log(selectedFamilles);
+
+
+    }
 
 
 
@@ -136,19 +168,9 @@ export default function Agres({ initialData,familles }) {
                 </Grid>
                 <Grid item xs={12} sm={4}>
 
-                    {/*<Slider*/}
-                    {/*    size="small"*/}
-                    {/*    step={0.1}*/}
-                    {/*    valueLabelDisplay="on"*/}
-                    {/*    marks*/}
-                    {/*    aria-label="Small"*/}
-                    {/*    valueLabelDisplay="auto"*/}
-                    {/*    value={formMin} onChange={(e) => setFormMin(e.target.value)}*/}
-                    {/*    max={0.7}*/}
-                    {/*/>*/}
 
                     <Slider
-                        getAriaLabel={() => 'Temperature range'}
+                        getAriaLabel={() => 'Difficulté range'}
                         value={range}
                         onChange={(e) => setRange(e.target.value)}
                         valueLabelDisplay="auto"
@@ -161,33 +183,50 @@ export default function Agres({ initialData,familles }) {
 
 
                 </Grid>
+
+
+
                 <Grid item xs={12} sm={4}>
 
+                    {/*<Button onClick={handleOpen}>Open modal</Button>*/}
+                    {/*<Modal*/}
+                    {/*    open={open}*/}
+                    {/*    onClose={handleClose}*/}
+                    {/*    aria-labelledby="modal-modal-title"*/}
+                    {/*    aria-describedby="modal-modal-description"*/}
+                    {/*>*/}
+                    {/*    <Box sx={style}>*/}
+                    {/*        {familles.map((famille) =>(*/}
+
+                    {/*            <FormControlLabel*/}
+                    {/*                control={*/}
+                    {/*                    <Checkbox defaultChecked checked={selectedFamilly[famille.id]} onChange={(e) => setselectedFamilly({...selectedFamilly, [famille.id]: e.target.checked})} name={famille.id} />*/}
+                    {/*                }*/}
+                    {/*                label={famille.nom}*/}
+                    {/*            />*/}
+                    {/*        ))}*/}
 
 
+                    {/*    </Box>*/}
+                    {/*</Modal>*/}
+
+                    <MultipleSelect familles={familles} callback={callbackSelectedFamille}></MultipleSelect>
 
 
-                    <FormGroup>
-                        {/*{familles.map((famille) =>(*/}
+                    {/*<FormGroup>*/}
+                    {/*    {familles.map((famille) =>(*/}
 
-                        {/*//     <FormControlLabel*/}
-                        {/*//     control={*/}
-                        {/*//         <Checkbox defaultChecked checked={selectedFamilly[famille.id]} onChange={(e) => setselectedFamilly({...selectedFamilly, [famille.id]: e.target.checked})} name={famille.id} />*/}
-                        {/*//     }*/}
-                        {/*//     label={famille.nom}*/}
-                        {/*// />*/}
+                    {/*        <FormControlLabel*/}
+                    {/*        control={*/}
+                    {/*            <Checkbox defaultChecked checked={selectedFamilly[famille.id]} onChange={(e) => setselectedFamilly({...selectedFamilly, [famille.id]: e.target.checked})} name={famille.id} />*/}
+                    {/*        }*/}
+                    {/*        label={famille.nom}*/}
+                    {/*    />*/}
 
-                        {/*    */}
-
-                        {/*    */}
+                    {/*    ))}*/}
 
 
-
-
-                        {/*))}*/}
-
-
-                    </FormGroup>
+                    {/*</FormGroup>*/}
 
 
 
