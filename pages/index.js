@@ -14,9 +14,9 @@ export default function Home({data}) {
 
 
 
-          <Link href="/elements">
-              <Button variant="contained" >Elements</Button>
-          </Link>
+          {/*<Link href="/elements">*/}
+          {/*    <Button variant="contained" >Elements</Button>*/}
+          {/*</Link>*/}
 
           <Link href="/agres">
               <Button variant="contained" >Agrès</Button>

@@ -15,6 +15,7 @@ import { Slider,Checkbox } from '@mui/material';
 import FormLabel from '@mui/material/FormLabel';
 import {FormGroup,FormControlLabel,Button,Modal,Box,Typography} from "@mui/material";
 import MultipleSelect from "../../components/agres/MultipleSelect";
+import {ArrowBack} from "@material-ui/icons";
 
 
 const style = {
@@ -154,9 +155,12 @@ export default function Agres({ initialData,familles }) {
 
 
             <Grid container spacing={1}>
+
                 <Grid item xs={12}>
-                    <SimpleBadge count={data.length} />
+                    <Button variant="contained" href={'/agres'}><ArrowBack></ArrowBack> Liste Agrès</Button>
                 </Grid>
+
+
 
 
                 <Grid item xs={12} sm={4}>
@@ -231,6 +235,12 @@ export default function Agres({ initialData,familles }) {
 
 
                 </Grid>
+
+
+                <Grid item xs={12}>
+                    <SimpleBadge count={data.length} />
+                </Grid>
+
 
                 {data.map((elements) =>(
 
