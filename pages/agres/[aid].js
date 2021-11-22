@@ -32,6 +32,7 @@ const style = {
 
 
 
+
 export async function getServerSideProps(context) {
 
     const { aid } = context.query;
@@ -60,6 +61,10 @@ export async function getServerSideProps(context) {
 
 export default function Agres({ initialData,familles }) {
 
+
+
+
+
     //Gets router parameter
     const router=useRouter();
     const {aid} = router.query;
@@ -78,6 +83,42 @@ export default function Agres({ initialData,familles }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+
+    function presetN78()
+    {
+        setRange([0.1,0.2]);
+    }
+
+    function presetN6()
+    {
+        setRange([0.1,0.3]);
+    }
+
+    function presetN5()
+    {
+        setRange([0.2,0.4]);
+    }
+
+    function presetN4()
+    {
+        setRange([0.3,0.5]);
+    }
+
+    function presetN3()
+    {
+        setRange([0.3,0.6]);
+    }
+
+    function presetN2()
+    {
+        setRange([0.3,0.7]);
+    }
+
+    function presetN1()
+    {
+        setRange([0.3,0.7]);
+    }
 
 
     //Effect for formText
@@ -156,8 +197,19 @@ export default function Agres({ initialData,familles }) {
 
             <Grid container spacing={1}>
 
-                <Grid item xs={12}>
+                <Grid item xs={6}>
                     <Button variant="contained" href={'/agres'}><ArrowBack></ArrowBack> Liste Agrès</Button>
+                </Grid>
+
+                <Grid item xs={6}>
+                    <Button variant="contained" onClick={presetN78} >N8</Button>
+                    <Button variant="contained" onClick={presetN78} >N7</Button>
+                    <Button variant="contained" onClick={presetN6} >N6</Button>
+                    <Button variant="contained" onClick={presetN5} >N5</Button>
+                    <Button variant="contained" onClick={presetN4} >N4</Button>
+                    <Button variant="contained" onClick={presetN3} >N3</Button>
+                    <Button variant="contained" onClick={presetN2} >N2</Button>
+                    <Button variant="contained" onClick={presetN1} >N1</Button>
                 </Grid>
 
 
