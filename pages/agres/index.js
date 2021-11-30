@@ -4,10 +4,11 @@ import utilStyles from "../../styles/utils.module.css";
 import Link from "next/link";
 import {Button} from "@mui/material";
 import Image from "next/image";
-import {Grid} from "@mui/material";
+import {Grid,CircularProgress} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import {useEffect, useState} from "react";
 import CardActions from "@mui/material/CardActions";
 
 
@@ -30,11 +31,26 @@ export async function getStaticProps(context) {
 
 export default function Agres({ data }) {
 
+    const router = useRouter();
+    const [pageLoading, setPageLoading] = useState(false);
+
+    useEffect(() => {
+        const handleStart = () => { setPageLoading(true); };
+        const handleComplete = () => { setPageLoading(false); };
+
+        router.events.on('routeChangeStart', handleStart);
+        router.events.on('routeChangeComplete', handleComplete);
+        router.events.on('routeChangeError', handleComplete);
+    }, [router]);
+
 
 
     return (
         <Layout>
             {/* Keep the existing code here */}
+            {pageLoading &&
+            <CircularProgress />
+            }
 
             {/* Add this <section> tag below the existing <section> tag */}
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -42,6 +58,7 @@ export default function Agres({ data }) {
 
 
                 <Grid container spacing={3}>
+
 
 
 

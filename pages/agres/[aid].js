@@ -33,6 +33,8 @@ const style = {
 
 
 
+
+
 export async function getServerSideProps(context) {
 
     const { aid } = context.query;
@@ -78,12 +80,7 @@ export default function Agres({ initialData,familles }) {
     const [range, setRange] = useState([0.1, 0.7]);
     const [selectedFamilly,setSelectedFamilly] = useState([]);
 
-    //Modal Part
-
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
+    let previousFamilly = [];
 
     function presetN78()
     {
@@ -297,7 +294,11 @@ export default function Agres({ initialData,familles }) {
                 {data.map((elements) =>(
 
 
+
+
                     <ElementCard element={elements}></ElementCard>
+
+
 
                 ))}
 
