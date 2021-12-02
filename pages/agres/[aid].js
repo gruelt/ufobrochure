@@ -213,7 +213,9 @@ export default function Agres({ initialData,familles }) {
             <Grid container spacing={1}>
 
                 <Grid item xs={6}>
-                    <Button variant="contained" href={'/agres'}><ArrowBack></ArrowBack> Liste Agrès</Button>
+                    <Link href={'/agres/'}>
+                        <Button variant="contained" ><ArrowBack></ArrowBack> Liste Agrès</Button>
+                    </Link>
                 </Grid>
 
                 <Grid item xs={6}>
