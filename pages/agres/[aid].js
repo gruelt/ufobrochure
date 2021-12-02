@@ -35,25 +35,43 @@ const style = {
 
 
 
-export async function getServerSideProps(context) {
+export async function getStaticProps({params}) {
 
-    const { aid } = context.query;
-    const res = await fetch(process.env.API_URL+'/api/agres/'+ aid+'/elements');
+    //const { aid } = context.query;
+    //const { aid } = params.aid;
+    const res = await fetch(process.env.API_URL+'/api/agres/'+ params.aid+'/elements');
     const initialData = await res.json()
-    //console.log(initialData + "iniital");
+    //console.log(initialData + "iniital");;
     if (!initialData) {
         return {
             notFound: true,
         }
     }
 
-    const resfamilles = await fetch(process.env.API_URL+'/api/agres/'+ aid+'/familles');
+    const resfamilles = await fetch(process.env.API_URL+'/api/agres/'+ params.aid+'/familles');
     const familles = await resfamilles.json();
 
 
     return {
         props: { initialData,familles }, // will be passed to the page component as props
     }
+}
+
+export async function getStaticPaths() {
+    const res = await fetch(process.env.API_URL+'/api/agres');
+    const agres = await res.json()
+
+    //Get the paths we want to pre-render based on posts
+    const paths = agres.map((agre) => ({
+        params: { aid: agre.id.toString() },
+    }))
+    //const paths = [];
+
+
+    // We'll pre-render only these paths at build time.
+    // { fallback: blocking } will server-render pages
+    // on-demand if the path doesn't exist.
+    return { paths, fallback: true }
 }
 
 
