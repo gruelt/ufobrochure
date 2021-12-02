@@ -22,7 +22,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 export async function getStaticProps(context) {
     const res = await fetch(process.env.API_URL+'/api/elements');
     const data = await res.json()
-    console.log(data)
+    //console.log(data)
     if (!data) {
         return {
             notFound: true,

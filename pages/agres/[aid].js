@@ -138,7 +138,7 @@ export default function Agres({ initialData,familles }) {
 
     //Effect for formText
     useEffect(() => {
-        console.log(selectedFamilly);
+        // console.log(selectedFamilly);
         let filteredData = initialData.filter(item => {
 
             return String(item.nom).toLowerCase().includes(formText.toLowerCase())
@@ -159,7 +159,7 @@ export default function Agres({ initialData,familles }) {
         //etselectedFamilly(selectedFamilles);
 
         setSelectedFamilly(selectedFamilles);
-        console.log(selectedFamilles);
+        //console.log(selectedFamilles);
 
 
     }
